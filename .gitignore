@@ -7,3 +7,5 @@
 *.out
 *.snm
 *.toc
+*.swp
+.ipynb_checkpoints
