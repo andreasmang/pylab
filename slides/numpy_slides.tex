@@ -1,0 +1,77 @@
+\section{Numpy: Introduction}
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+
+\begin{frame}{Overview}
+This document provides an introduction to the NumPy library in Python, covering array creation, attributes, indexing, operations, and useful functions.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Creating Arrays}
+NumPy arrays can be one-dimensional or multi-dimensional:
+
+\begin{lstlisting}[language=Python]
+a = np.array([1, 2, 3])
+b = np.array([[1, 2, 3], [4, 5, 6]])
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Array Attributes}
+You can inspect properties of an array, such as its shape, size, and data type:
+
+\begin{lstlisting}[language=Python]
+b.shape  # (2, 3)
+b.size   # 6
+b.dtype  # int64 (or similar depending on system)
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Array Indexing and Slicing}
+Access specific elements or slices of the array:
+
+\begin{lstlisting}[language=Python]
+b[0]     # First row
+b[1, 2]  # Element at second row, third column
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Array Operations}
+Arrays can be added or multiplied using standard operators. The dot product is also available:
+
+\begin{lstlisting}[language=Python]
+x = np.array([1, 2, 3])
+y = np.array([4, 5, 6])
+x + y          # Element-wise addition
+np.dot(x, y)   # Dot product
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Useful Functions}
+NumPy offers convenient functions to generate arrays:
+
+\begin{lstlisting}[language=Python]
+np.zeros((2, 3))     # Array of zeros
+np.ones((2, 3))      # Array of ones
+np.arange(0, 10, 2)  # Array from 0 to 10 with step 2
+np.linspace(0, 1, 5) # 5 equally spaced numbers from 0 to 1
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Conclusion}
+NumPy provides efficient array structures and numerical operations essential for scientific computing in Python.
+\end{frame}
+

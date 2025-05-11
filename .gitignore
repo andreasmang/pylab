@@ -8,4 +8,5 @@
 *.snm
 *.toc
 *.swp
+*.vrb
 .ipynb_checkpoints

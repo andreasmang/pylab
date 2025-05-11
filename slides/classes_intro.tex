@@ -1,0 +1,100 @@
+\section{Object Oriented Programming}
+
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+
+
+\begin{frame}{Introduction}
+Python is an object-oriented programming language, and classes are fundamental to creating and managing objects. A class defines the blueprint for an object, encapsulating data (attributes) and behavior (methods).
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Defining a Class}
+A class is defined using the \texttt{class} keyword.
+
+\begin{lstlisting}[language=python]
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Defining a Class}
+\begin{itemize}
+\item \texttt{\_\_init\_\_} is the constructor method, called when a new object is created.
+\item \texttt{self} refers to the current instance of the class.
+\item Attributes like \texttt{name} and \texttt{age} are set on the instance.
+\item \texttt{greet} is a method that uses instance attributes.
+ \end{itemize}
+ \end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Creating an Object}
+You can create and use an object like this:
+
+\begin{lstlisting}[language=Python]
+p = Person("Alice", 30)
+p.greet()
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Class vs Instance Variables}
+\begin{lstlisting}[language=python]
+class Dog:
+    species = "Canis familiaris"  # Class variable
+
+    def __init__(self, name):
+        self.name = name  # Instance variable
+\end{lstlisting}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Inheritance}
+Classes can inherit from other classes:
+
+\begin{lstlisting}[language=python]
+class Animal:
+    def speak(self):
+        print("Makes a sound")
+
+class Dog(Animal):
+    def speak(self):
+        print("Barks")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Encapsulation}
+Encapsulation restricts direct access to some components:
+\begin{lstlisting}[language=python]
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private variable
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Conclusion}
+Python classes offer a powerful way to model real-world entities by combining data and behavior. Key concepts include constructors, instance and class variables, inheritance, and encapsulation.
+\end{frame}

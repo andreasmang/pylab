@@ -1,0 +1,98 @@
+\section{Scipy}
+
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+
+\begin{frame}{Notebook}
+
+The notebook covers four main functionalities:
+\begin{enumerate}
+    \item Curve Fitting
+    \item Numerical Integration
+    \item Solving Linear Equations
+    \item Statistical Testing
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Content}
+\begin{itemize}
+\item Special functions (scipy.special)
+\item  Integration (scipy.integrate)
+\item Optimization (scipy.optimize)
+\item Interpolation (scipy.interpolate)
+\item Fourier Transforms (scipy.fft)
+\item Signal Processing (scipy.signal)
+\item Linear Algebra (scipy.linalg)
+\item Sparse eigenvalue problems with ARPACK
+\item Compressed Sparse Graph Routines (scipy.sparse.csgraph)
+\item Spatial data structures and algorithms (scipy.spatial)
+\item Statistics (scipy.stats)
+\item Multidimensional image processing (scipy.ndimage)
+\item File IO (scipy.io)
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Curve Fitting}
+We simulate noisy sine wave data and fit it using a sinusoidal model:
+
+\begin{lstlisting}[language=python]
+x = np.linspace(0, 10, 100)
+y = 3.5 * np.sin(x) + np.random.normal(size=100)
+def model_func(x, a, b): return a * np.sin(b * x)
+params, _ = optimize.curve_fit(model_func, x, y)
+\end{lstlisting}
+
+
+This returns the best-fit parameters for amplitude and frequency.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Integration}
+We compute the definite integral of the Gaussian function:
+
+\[
+\int_0^{\infty} \exp(-x^2) \,\text{d}x
+\]
+
+\begin{lstlisting}[language=python]
+result,error = integrate.quad(lambda x: np.exp(-x**2), 0, np.inf)
+\end{lstlisting}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Linear Algebra}
+We solve a system $Ax = y$:
+\[
+A = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}, \quad y = \begin{bmatrix} 9 \\ 8 \end{bmatrix}
+\]
+%
+\begin{lstlisting}[language=python]
+x_sol = linalg.solve(A, y)
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Statistical Testing}
+We compare two groups using a two-sample t-test:
+\begin{lstlisting}[language=python]
+group1 = np.random.normal(5.0, 1.0, 30)
+group2 = np.random.normal(5.5, 1.0, 30)
+t_stat, p_val = stats.ttest_ind(group1, group2)
+\end{lstlisting}
+
+This determines whether the groups have significantly different means.
+\end{frame}
+
+\begin{frame}{Conclusion}
+SciPy provides powerful tools for scientific computing, all within a consistent and easy-to-use interface.
+\end{frame}
