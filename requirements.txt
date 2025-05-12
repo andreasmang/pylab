@@ -1,4 +1,6 @@
-sklearn
+jupyter
+scikit-learn
+trimesh
 numpy
 scipy
 seaborn
