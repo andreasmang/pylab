@@ -26,5 +26,5 @@ clean:
 	rm -f *.aux *.log *.dvi *.blg *.bbl \
           *.fls *.fdb_latexmk *.out     \
           *.brf *.snm *.toc *.nav       \
-		  *.pdfsync *.bcf *.pdf 
+		  *.pdfsync *.bcf *.pdf *.vrb 
 	@echo Cleaned ....!
