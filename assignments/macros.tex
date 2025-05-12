@@ -1,0 +1,17 @@
+\DeclareMathOperator*{\minopt}{minimize\;\;}
+\DeclareMathOperator*{\maxopt}{maximize\;\;}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\st}{\operatorname{subject\;to\;\;}}
+
+\newcommand{\defeq}{\ensuremath{\mathrel{\mathop:}=}}
+\newcommand{\eqdef}{\ensuremath{=\mathrel{\mathop:}}}
+
+
+%\newcommand{\sol}[1]{\ifsolution\newline\textbf{Solution:} #1\fi}
+
+\ifsolution
+    \newenvironment{solution}{\flushleft\textbf{Solution}\newline}{\endflushleft}
+\else
+    \excludecomment{solution}
+\fi

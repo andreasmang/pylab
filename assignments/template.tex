@@ -1,0 +1,72 @@
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage[letterpaper,top=0.5in,
+bottom=1.5in,left=0.8in,right=1.2in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage[us,mmddyyyy]{datetime}
+\settimeformat{ampmtime}
+
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{nicefrac}
+\usepackage{wasysym}
+\usepackage{marvosym}
+\usepackage{sansmath}
+\sansmath
+
+\usepackage{titling}
+
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.2}
+
+%\setlength{\droptitle}{-1cm}
+%\date{\vspace{-2cm}}
+
+\definecolor{red}{RGB}{200, 16, 46}
+
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[colorlinks=true,
+filecolor=black,
+citecolor=red,
+urlcolor=red,
+backref=page]{hyperref}
+\hypersetup{pdfauthor={Andreas Mang},
+linkcolor=red,
+,pdflang=en-US,
+pdftitle=Homework Assignment,
+citecolor=red}
+
+\usepackage[tagged, highstructure]{accessibility}
+\usepackage{graphicx}
+\usepackage{cleveref}
+
+\newif\ifsolution
+
+
+
+\newcolumntype{R}{>{\columncolor{gray!20}}r}
+\newcolumntype{L}{>{\columncolor{gray!20}}l}
+\newcolumntype{C}{>{\columncolor{gray!20}}c}
+
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+backgroundcolor=\color{white},      % choose the background color
+basicstyle=\ttfamily\normalsize,  % size of fonts used for the code
+breaklines=true,                    % automatic line breaking only at whitespace
+captionpos=b,                       % sets the caption-position to bottom
+commentstyle=\color{mygreen},       % comment style
+escapeinside={\%*}{*)},             % if you want to add LaTeX within your code
+keywordstyle=\color{blue},          % keyword style
+stringstyle=\color{mymauve},        % string literal style
+}
+

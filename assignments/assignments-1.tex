@@ -1,0 +1,233 @@
+\documentclass[11pt]{article}
+
+\input template.tex
+\input macros.tex
+
+
+\title{Python Tutorial}
+\date{Spring 2025}
+\author{Andreas Mang}
+
+\begin{document}
+\maketitle
+
+
+\section*{Python Namespaces and Variable Scoping}
+
+Test your understanding of Python’s LEGB rule and the use of \texttt{global} and \texttt{nonlocal} keywords.
+
+\subsection*{Tasks}
+\noindent What will the following code print? Explain each output:
+\begin{lstlisting}[language=Python]
+x = "global"
+
+def outer():
+    x = "outer"
+    def inner():
+        print("Inner:", x)
+    inner()
+    print("Outer:", x)
+
+outer()
+print("Global:", x)
+\end{lstlisting}
+
+
+
+\noindent What will the following code print? Explain the use of \texttt{global}.
+\begin{lstlisting}[language=Python]
+x = 5
+
+def func():
+    global x
+    x = 10
+
+func()
+print(x)
+\end{lstlisting}
+
+\noindent Given the function below, fill in the blank to modify the value of \texttt{x} in the enclosing scope:
+\begin{lstlisting}[language=Python]
+def outer():
+    x = 3
+    def inner():
+        _____ x
+        x = 7
+    inner()
+    print(x)
+\end{lstlisting}
+
+\noindent Explain the LEGB rule using a small custom example with nested functions.
+
+
+\section*{Basic Python Operators}
+We practice using basic Python operators including arithmetic, comparison, logical, assignment, and bitwise operators.
+
+\subsection*{Tasks}
+For each question below, write a short Python program or expression that evaluates the result. Show your output and explain briefly how the result was computed.
+\begin{enumerate}[label=\arabic*.]
+  \item Given \lstinline{a = 12} and \lstinline{b = 5}, compute and print the result of each of the following:
+  \begin{enumerate}[label=(\alph*)]
+    \item \lstinline{a + b}
+    \item \lstinline{a - b}
+    \item \lstinline{a * b}
+    \item \lstinline{a / b}
+    \item \lstinline{a % b}
+    \item \lstinline{a // b}
+    \item \lstinline{a ** b}
+  \end{enumerate}
+
+  \item Evaluate and explain the result of the following comparison expressions:
+  \begin{enumerate}[label=(\alph*)]
+    \item \lstinline{a == b}
+    \item \lstinline{a != b}
+    \item \lstinline{a > b}
+    \item \lstinline{a <= b}
+  \end{enumerate}
+
+  \item Consider \lstinline{x = True} and \lstinline{y = False}. Evaluate:
+  \begin{enumerate}[label=(\alph*)]
+    \item \lstinline{x and y}
+    \item \lstinline{x or y}
+    \item \lstinline{not x}
+  \end{enumerate}
+
+  \item Starting with \lstinline{c = 7}, apply each of the following assignment operations and print the updated value:
+  \begin{enumerate}[label=(\alph*)]
+    \item \lstinline{c += 2}
+    \item \lstinline{c *= 3}
+    \item \lstinline{c -= 4}
+    \item \lstinline{c /= 5}
+  \end{enumerate}
+
+  \item Given \lstinline{m = 6} and \lstinline{n = 3}, evaluate the following bitwise operations:
+  \begin{enumerate}[label=(\alph*)]
+    \item \lstinline{m & n}
+    \item \lstinline{m | n}
+    \item \lstinline{m ^ n}
+    \item \lstinline{~m}
+    \item \lstinline{m << 1}
+    \item \lstinline{m >> 1}
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\section*{Lambda Function and Sorting}
+
+You are given a list of tuples, where each tuple contains a name and a score:
+\begin{lstlisting}[language=python]
+data = [("Alice", 82), ("Bob", 91), ("Charlie", 78), ("David", 85)]
+\end{lstlisting}
+\begin{enumerate}
+\item Use a \texttt{lambda} function and the \texttt{sorted()} function to sort this list in:
+\begin{itemize}
+    \item[(a)] Ascending order by score
+    \item[(b)] Descending order by name (lexicographically)
+\end{itemize}
+\item Write the corresponding Python code to display the sorted results.
+\end{enumerate}
+
+
+
+
+\section*{Numerical Integration with SciPy}
+
+Use Python and the \texttt{scipy.integrate} module to numerically evaluate the following definite integral:
+\[
+\int_0^2 \exp(-x^2) \, \text{d}x
+\]
+
+\subsection*{Tasks:}
+\begin{enumerate}
+\item Import the necessary function from SciPy: \lstinline[language=python]{from scipy.integrate import quad}
+\item Define the function \( f(x) = \exp(-x^2) \).
+\item Use \texttt{quad} to compute the integral over the interval \( [0, 2] \).
+\item Print the result and the estimated error.
+\end{enumerate}
+
+\noindent\textbf{Bonus:} Try changing the integration bounds to \( [-\infty, \infty] \) and observe the result. What is the significance of this value?
+
+
+
+
+
+\section*{Robust Calculator with Exception Handling}
+
+Write a Python program that performs division between two numbers entered by the user.
+\subsection*{Tasks:}
+\begin{enumerate}
+\item Prompt the user to enter two numbers (numerator and denominator).
+\item Attempt to convert the inputs to \texttt{float}.
+\item Perform the division: \texttt{numerator / denominator}.
+\item Handle the following exceptions:
+\begin{itemize}
+    \item \texttt{ValueError}: if the input is not a number.
+    \item \texttt{ZeroDivisionError}: if the denominator is zero.
+\end{itemize}
+\item If the division is successful, print the result.
+\item Always print \texttt{"Operation complete."} at the end, regardless of whether an exception occurred.
+\end{enumerate}
+
+\subsection*{Sample Output:}
+\begin{lstlisting}[language=python]
+Enter numerator: 10
+Enter denominator: 0
+Error: Cannot divide by zero.
+Operation complete.
+\end{lstlisting}
+
+
+
+\section*{Solving a Linear System with an Ill-Conditioned Matrix}
+
+Consider the following linear system \( Ax = b \), where:
+\[
+A = \begin{bmatrix}
+1 & 1 \\
+1 & 1.0001
+\end{bmatrix},
+\quad
+b = \begin{bmatrix}
+2 \\
+2.0001
+\end{bmatrix}
+\]
+
+\subsection*{Tasks:}
+\begin{enumerate}
+\item Use NumPy to define the matrix \( A \) and the vector \( b \).
+\item Solve for \( x \) using \lstinline[language=python]{numpy.linalg.solve}.
+\item Compute the condition number of \( A \) using \lstinline[language=python]{numpy.linalg.cond}.
+\item Comment on the stability of the solution and the effect of the condition number.
+\end{enumerate}
+
+\subsection*{Bonus:}
+Try modifying the second element of \( b \) slightly and observe how the solution changes.
+
+
+
+
+\section*{Object-Oriented Programming}
+Understand how to define and use classes in Python by creating objects, methods, and constructors.
+
+\subsection*{Tasks:}
+Complete the tasks below by writing Python code and explaining what it does.
+\begin{enumerate}[label=\arabic*.]
+\item Define a class called \texttt{Circle} that has the following:
+\begin{itemize}
+    \item An \lstinline{__init__} method that takes a radius
+    \item A method \texttt{area()} that returns the area of the circle
+    \item A method \texttt{circumference()} that returns the circumference
+\end{itemize}
+\item Create an instance of \texttt{Circle} with radius 5 and print its area and circumference.
+\item Modify the class to include a class variable \lstinline{pi = 3.14159} and use it in the calculations.
+\item Add a string representation method \lstinline{__str__} so that printing the object returns a string like \lstinline[language=python]{"Circle with radius 5"}.
+\item Create a subclass \texttt{Sphere} that inherits from \texttt{Circle} and adds a method \texttt{volume()} that returns the volume of the sphere.
+\item Create an instance of \texttt{Sphere} with radius 5 and print its area (surface area), circumference, and volume.
+\end{enumerate}
+
+
+
+
+\end{document}
