@@ -1,4 +1,7 @@
 filename=lec01
+filename=lec02
+filename=lec03
+filename=lec04
 #filename=applications
 
 all:

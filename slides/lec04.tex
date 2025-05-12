@@ -1,0 +1,106 @@
+\documentclass[mathserif,20pt,xcolor=table,compress,aspectratio=169]{beamer}
+
+\def\titleskip{2.8cm}
+\input{template}
+
+\title[]{\large Spectral Clustering}
+%\subtitle[]{}
+\author[]{Andreas Mang}
+\institute[]{Department of Mathematics, Scientific Computing, Optimization, and Parallel Algorithms Lab, University of Houston}
+\date[]{Python Workshop, Department of Mathematics, University of Houston}
+
+
+
+\begin{document}
+
+\begin{frame}[plain,label=mytitlepage]
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}{What is Spectral Clustering?}
+\begin{itemize}
+    \item A graph-based clustering algorithm.
+    \item Converts data into a similarity graph.
+    \item Computes the graph Laplacian and its eigenvectors.
+    \item Performs clustering (e.g., with K-Means) on the reduced eigenvector space.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Use Spectral Clustering?}
+\begin{itemize}
+    \item Handles non-convex and complex cluster shapes.
+    \item Suitable for data not well separated by linear boundaries.
+    \item Leverages the global structure of the data via eigen decomposition.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Python Libraries and Dataset}
+\begin{lstlisting}[language=Python]
+from sklearn.datasets import make_moons
+X, y_true = make_moons(n_samples=300,
+                       noise=0.05,
+                       random_state=0)
+
+plt.scatter(X[:, 0], X[:, 1], s=50)
+plt.title("Two Moons Dataset")
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Applying Spectral Clustering}
+\begin{lstlisting}[language=Python]
+from sklearn.cluster import SpectralClustering
+
+sc = SpectralClustering(n_clusters=2,
+                        affinity='nearest_neighbors',
+                        assign_labels='kmeans',
+                        random_state=0)
+
+labels = sc.fit_predict(X)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Visualizing the Result}
+\begin{lstlisting}[language=Python]
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.title("Spectral Clustering Result")
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Affinity Options}
+\texttt{affinity=} controls the similarity measure:
+\begin{itemize}
+    \item \texttt{nearest\_neighbors} — graph-based neighborhood
+    \item \texttt{rbf} — radial basis function kernel
+    \item \texttt{precomputed} — custom similarity matrix
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Key Concepts}
+\begin{itemize}
+    \item \textbf{Similarity Graph}: Encodes how similar points are.
+    \item \textbf{Graph Laplacian}: Captures the structure of the graph.
+    \item \textbf{Eigenvectors}: Used for dimensionality reduction before clustering.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations and Notes}
+\begin{itemize}
+    \item Computationally expensive for large datasets.
+    \item Choice of affinity and number of neighbors impacts performance.
+    \item Often requires tuning hyperparameters.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item Spectral Clustering excels in identifying non-linear patterns.
+    \item Useful for graph-based and structured datasets.
+    \item Combine with visualization and elbow-like heuristics for best results.
+\end{itemize}
+\end{frame}
+
+\end{document}

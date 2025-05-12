@@ -1,0 +1,131 @@
+\documentclass[mathserif,20pt,xcolor=table,compress,aspectratio=169]{beamer}
+
+\def\titleskip{2.8cm}
+\input{template}
+
+\title[]{\large K-Means Clustering}
+%\subtitle[]{}
+\author[]{Andreas Mang}
+\institute[]{Department of Mathematics, Scientific Computing, Optimization, and Parallel Algorithms Lab, University of Houston}
+\date[]{Python Workshop, Department of Mathematics, University of Houston}
+
+\begin{document}
+
+\begin{frame}[plain,label=mytitlepage]
+\titlepage
+\end{frame}
+
+
+\begin{frame}{What is K-Means Clustering?}
+\begin{itemize}
+    \item An unsupervised learning algorithm.
+    \item Partitions data into $k$ clusters.
+    \item Each point belongs to the cluster with the nearest centroid.
+    \item Objective: minimize intra-cluster variance.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Algorithm Overview}
+\begin{enumerate}
+    \item Initialize $k$ centroids randomly.
+    \item Assign each point to the nearest centroid.
+    \item Update centroids as the mean of assigned points.
+    \item Repeat steps 2–3 until convergence.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Python Libraries}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Generating Synthetic Data}
+\begin{lstlisting}[language=Python]
+X, y_true = make_blobs(n_samples=300,
+                       centers=4,
+                       cluster_std=0.60,
+                       random_state=0)
+
+plt.scatter(X[:, 0], X[:, 1], s=50)
+plt.title("Generated Data")
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Applying K-Means}
+\begin{lstlisting}[language=Python]
+kmeans = KMeans(n_clusters=4, random_state=0)
+kmeans.fit(X)
+
+y_kmeans = kmeans.predict(X)
+centroids = kmeans.cluster_centers_
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Visualizing Clusters}
+\begin{lstlisting}[language=Python]
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis')
+plt.scatter(centroids[:, 0], centroids[:, 1],
+            c='red', s=200, marker='X')
+plt.title("K-Means Clustering Results")
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Choosing $k$: The Elbow Method}
+\begin{lstlisting}[language=Python]
+inertia = []
+for k in range(1, 10):
+    km = KMeans(n_clusters=k, random_state=0)
+    km.fit(X)
+    inertia.append(km.inertia_)
+
+plt.plot(range(1, 10), inertia, marker='o')
+plt.title("Elbow Method")
+plt.xlabel("k")
+plt.ylabel("Inertia")
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{What is the Elbow Method?}
+\begin{itemize}
+    \item Determine optimal number of clusters $k$.
+    \item Compute K-Means for a range of $k$ values.
+    \item Plot the \textbf{inertia} (sum of squared distances to centroids).
+    \item Look for an "elbow" in the plot where inertia drops off more slowly.
+    \item The $k$ at the elbow point is considered a good choice.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Key Concepts}
+\begin{itemize}
+    \item \textbf{Centroids}: Mean of data points in a cluster.
+    \item \textbf{Inertia}: Sum of squared distances from each point to its centroid.
+    \item \textbf{Convergence}: When centroids no longer move.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations of K-Means}
+\begin{itemize}
+    \item Requires specifying $k$ in advance.
+    \item Sensitive to initial centroid placement.
+    \item Assumes spherical clusters of similar size.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item K-Means is simple and efficient for clustering.
+    \item Best used when clusters are well-separated.
+    \item Combine with techniques like the Elbow Method for choosing $k$.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

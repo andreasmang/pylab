@@ -1,0 +1,88 @@
+\section{Python Dictionaries}
+
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+\begin{frame}[fragile]{What is a Dictionary?}
+\begin{itemize}
+    \item A dictionary is an unordered collection of \textbf{key-value pairs}.
+    \item Keys must be \textbf{unique} and \textbf{immutable}.
+    \item Values can be of any data type.
+\end{itemize}
+\begin{lstlisting}[language=Python]
+person = {
+    "name": "Alice",
+    "age": 30,
+    "city": "New York"
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Accessing Values}
+\begin{lstlisting}[language=Python]
+# Access by key
+print(person["name"])
+
+# Safe access with get()
+print(person.get("age"))
+print(person.get("email", "Not available"))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Modifying and Adding Items}
+\begin{lstlisting}[language=Python]
+# Modify
+person["age"] = 31
+
+# Add new key-value pair
+person["email"] = "alice@example.com"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Removing Items}
+\begin{lstlisting}[language=Python]
+# Remove specific item
+person.pop("city")
+
+# Remove last inserted item
+person.popitem()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Dictionary Methods}
+\begin{lstlisting}[language=Python]
+# Inspect dictionary
+person.keys()
+person.values()
+person.items()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Looping Through a Dictionary}
+\begin{lstlisting}[language=Python]
+for key, value in person.items():
+    print(key, ":", value)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Nested Dictionaries}
+\begin{lstlisting}[language=Python]
+students = {
+    "001": {"name": "Bob", "grade": "A"},
+    "002": {"name": "Carol", "grade": "B"}
+}
+
+print(students["001"]["name"])
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Dictionaries store data using key-value pairs.
+    \item Keys must be unique and hashable.
+    \item Values are accessed, modified, added, or deleted with simple syntax.
+    \item Useful methods: \texttt{get()}, \texttt{keys()}, \texttt{items()}, \texttt{pop()}, etc.
+\end{itemize}
+\end{frame}
+
