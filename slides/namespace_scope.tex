@@ -1,0 +1,90 @@
+\section{Python Namespaces and Variable Scoping}
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+
+\begin{frame}{What is a Namespace?}
+A \textbf{namespace} is a container that maps names to objects.
+\begin{itemize}
+    \item \textbf{Local}: Inside a function
+    \item \textbf{Enclosing}: In outer functions
+    \item \textbf{Global}: Top-level of a script or module
+    \item \textbf{Built-in}: Predefined names in Python
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Variable Scoping}
+Python uses the \textbf{LEGB Rule} to resolve names:
+\begin{enumerate}
+    \item \textbf{L}ocal
+    \item \textbf{E}nclosing
+    \item \textbf{G}lobal
+    \item \textbf{B}uilt-in
+\end{enumerate}
+
+Each level is searched in order for a variable name.
+\end{frame}
+
+
+\begin{frame}[fragile]{Global vs Local Scope}
+\begin{lstlisting}[language=Python]
+x = 10
+
+def func():
+    x = 5
+    print("Local x:", x)
+
+func()
+print("Global x:", x)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Using the \texttt{global} Keyword}
+\begin{lstlisting}[language=Python]
+x = 10
+
+def modify():
+    global x
+    x = 20
+
+modify()
+print(x)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{nonlocal} Keyword}
+\begin{lstlisting}[language=Python]
+def outer():
+    x = "outer"
+    def inner():
+        nonlocal x
+        x = "inner"
+    inner()
+    print(x)
+
+outer()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Built-in Scope}
+Python comes with a set of built-in names.
+
+\begin{lstlisting}[language=Python]
+print(len([1, 2, 3]))  # built-in len
+len = "Length"
+print(len)             # overrides built-in
+del len
+print(len([1, 2, 3]))  # restores built-in
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Best Practices}
+\begin{itemize}
+    \item Avoid using \texttt{global} if possible
+    \item Use \texttt{nonlocal} with care in nested functions
+    \item Don’t shadow built-in names like \texttt{len}, \texttt{sum}, etc.
+    \item Keep functions pure and return values instead of modifying outer scopes
+\end{itemize}
+\end{frame}
+

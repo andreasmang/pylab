@@ -1,0 +1,88 @@
+\section{Loops in Python}
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+
+\begin{frame}{Types of Loops}
+Python provides two main types of loops:
+\begin{itemize}
+    \item \textbf{for} loops — iterate over a sequence
+    \item \textbf{while} loops — repeat as long as a condition is true
+\end{itemize}
+Both support \texttt{break}, \texttt{continue}, and \texttt{else} clauses.
+\end{frame}
+
+\begin{frame}[fragile]{For Loop}
+\texttt{for} loops iterate over sequences such as lists or strings.
+
+\begin{lstlisting}[language=Python]
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Using \texttt{range()}}
+\texttt{range()} generates a sequence of numbers.
+
+\begin{lstlisting}[language=Python]
+for i in range(3):
+    print("Index:", i)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{While Loop}
+\texttt{while} loops repeat while a condition is true.
+
+\begin{lstlisting}[language=Python]
+count = 0
+while count < 3:
+    print("Count:", count)
+    count += 1
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Break and Continue}
+\texttt{break} exits the loop; \texttt{continue} skips to the next iteration.
+
+\begin{lstlisting}[language=Python]
+for i in range(5):
+    if i == 3:
+        break
+    if i % 2 == 0:
+        continue
+    print(i)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Nested Loops}
+Loops can be nested inside other loops.
+
+\begin{lstlisting}[language=Python]
+for i in range(2):
+    for j in range(3):
+        print(f"i={i}, j={j}")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Loops with Else}
+The \texttt{else} clause runs if the loop completes normally (no \texttt{break}).
+
+\begin{lstlisting}[language=Python]
+for i in range(3):
+    print(i)
+else:
+    print("Done")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Use \texttt{for} for iteration over sequences or ranges.
+    \item Use \texttt{while} for repetition based on conditions.
+    \item \texttt{break} stops the loop early; \texttt{continue} skips iteration.
+    \item Loops can have \texttt{else} blocks.
+\end{itemize}
+\end{frame}
+

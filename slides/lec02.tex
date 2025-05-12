@@ -1,0 +1,90 @@
+\documentclass[mathserif,20pt,xcolor=table,compress,aspectratio=169]{beamer}
+
+\def\titleskip{2.8cm}
+\input{template}
+
+\title[]{\large Solving a 2D Elliptic PDE with Finite Differences}
+%\subtitle[]{}
+\author[]{Andreas Mang}
+\institute[]{Department of Mathematics, Scientific Computing, Optimization, and Parallel Algorithms Lab, University of Houston}
+\date[]{Python Workshop, Department of Mathematics, University of Houston}
+
+\begin{document}
+
+\begin{frame}[plain,label=mytitlepage]
+\titlepage
+\end{frame}
+
+
+\begin{frame}{Problem Statement}
+We consider the 2D Poisson equation on the unit square:
+\[
+- \Delta u(x, y) = f(x, y), \quad (x, y) \in (0, 1)^2
+\]
+with homogeneous Dirichlet boundary conditions:
+\[
+u(x, y) = 0, \quad \text{for } (x, y) \in \partial \Omega
+\]
+\end{frame}
+
+
+\begin{frame}{Laplace Operator}
+The Laplace operator in 2D is given by:
+\[
+\Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}
+\]
+This operator describes diffusion, electrostatics, and other steady-state phenomena.
+\end{frame}
+
+
+\begin{frame}{Source Term}
+We choose a smooth, separable function:
+\[
+f(x, y) = \sin(\pi x)\sin(\pi y)
+\]
+This function ensures the solution is smooth and bounded.
+\end{frame}
+
+
+\begin{frame}{Discretization}
+\begin{itemize}
+    \item Domain discretized into a uniform grid of size \( (n_x+2) \times (n_y+2) \)
+    \item Grid spacings: \( h_x = \frac{1}{n_x+1}, \quad h_y = \frac{1}{n_y+1} \)
+    \item Use second-order central finite differences
+\end{itemize}
+\[
+\frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{h_x^2} + \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{h_y^2}
+\]
+\end{frame}
+
+
+\begin{frame}{Linear System}
+The discretized PDE results in a linear system:
+\[
+A u = f
+\]
+\begin{itemize}
+    \item \( A \): Sparse matrix representing 2D Laplacian
+    \item \( u \): Vector of unknown values at grid points
+    \item \( f \): Vector from evaluating source term
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Numerical Solution}
+\begin{itemize}
+    \item Use \texttt{scipy.sparse} for matrix construction
+    \item Solve with \texttt{spsolve}
+    \item Reshape the solution into 2D for visualization
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Solved 2D Poisson equation using finite differences
+    \item Used sparse matrix techniques for efficiency
+    \item Visualized the solution to verify behavior
+\end{itemize}
+\end{frame}
+
+\end{document}
+
