@@ -1,0 +1,133 @@
+\documentclass[mathserif,20pt,xcolor=table,compress,aspectratio=169]{beamer}
+
+\def\titleskip{2.8cm}
+\input{template}
+
+\title[]{\large Solving the Traveling Salesman Problem (TSP)}
+%\subtitle[]{}
+\author[]{Andreas Mang}
+\institute[]{Department of Mathematics, Scientific Computing, Optimization, and Parallel Algorithms Lab, University of Houston}
+\date[]{Python Workshop, Department of Mathematics, University of Houston}
+
+
+
+\begin{document}
+
+\begin{frame}[plain,label=mytitlepage]
+\titlepage
+\end{frame}
+
+\begin{frame}{What is the TSP?}
+\begin{itemize}
+    \item A classic combinatorial optimization problem.
+    \item Given a set of cities and distances between them, find the shortest possible route that visits each city exactly once and returns to the origin.
+    \item NP-hard: computationally infeasible to solve exactly for large numbers of cities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problem Formulation: Input}
+\begin{itemize}
+    \item A list of $n$ cities
+    \item A distance matrix $D \in \mathbb{R}^{n \times n}$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Problem Formulation: Objective}
+\[
+\text{minimize} \quad \sum_{i=1}^{n} D_{p_i, p_{i+1}}, \quad \text{where } p_n = p_0
+\]
+\begin{itemize}
+    \item $p = (p_0, p_1, ..., p_n)$ is a permutation of cities
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Solution Strategies}
+\begin{itemize}
+    \item \textbf{Brute Force:} Try all possible permutations (factorial time complexity)
+    \item \textbf{Heuristic Methods:}
+    \begin{itemize}
+        \item Nearest Neighbor
+        \item Greedy algorithms
+        \item Genetic algorithms
+        \item Simulated annealing
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Brute-Force Algorithm}
+\begin{lstlisting}[language=Python]
+import itertools
+def total_distance(path, dist_matrix):
+    return sum(dist_matrix[path[i], path[i+1]]
+               for i in range(len(path)-1)) + dist_matrix[path[-1], path[0]]
+
+best_path = None
+min_dist = float('inf')
+for perm in itertools.permutations(range(n)):
+    d = total_distance(perm, dist_matrix)
+    if d < min_dist:
+        best_path = perm
+        min_dist = d
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Brute Force: Pros and Cons}
+\begin{itemize}
+    \item \textbf{Pros:}
+    \begin{itemize}
+        \item Guarantees the optimal solution
+    \end{itemize}
+    \item \textbf{Cons:}
+    \begin{itemize}
+        \item Computationally infeasible for $n > 10$
+        \item Time complexity: $O(n!)$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Nearest Neighbor Heuristic}
+\begin{lstlisting}[language=Python]
+def nearest_neighbor(dist_matrix, start=0):
+    visited = [start]
+    total = 0
+    while len(visited) < len(dist_matrix):
+        last = visited[-1]
+        next_city = min(
+            (i for i in range(len(dist_matrix)) if i not in visited),
+            key=lambda i: dist_matrix[last][i])
+        visited.append(next_city)
+        total += dist_matrix[last][next_city]
+    total += dist_matrix[visited[-1]][start]
+    return visited, total
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Heuristics: Pros and Cons}
+\begin{itemize}
+    \item \textbf{Pros:}
+    \begin{itemize}
+        \item Much faster than brute-force
+        \item Useful for large-scale problems
+    \end{itemize}
+    \item \textbf{Cons:}
+    \begin{itemize}
+        \item Does not guarantee optimality
+        \item Quality of solution depends on data and method
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item TSP is a fundamental problem in combinatorial optimization
+    \item Brute-force gives exact solutions but is slow
+    \item Heuristic methods are practical and scalable
+    \item Ideal approach depends on size and application
+\end{itemize}
+\end{frame}
+
+\end{document}
+

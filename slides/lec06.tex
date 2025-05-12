@@ -1,0 +1,80 @@
+\documentclass[mathserif,20pt,xcolor=table,compress,aspectratio=169]{beamer}
+
+\def\titleskip{2.8cm}
+\input{template}
+
+\title[]{\large Bubble Sort}
+%\subtitle[]{}
+\author[]{Andreas Mang}
+\institute[]{Department of Mathematics, Scientific Computing, Optimization, and Parallel Algorithms Lab, University of Houston}
+\date[]{Python Workshop, Department of Mathematics, University of Houston}
+
+
+
+\begin{document}
+
+\begin{frame}[plain,label=mytitlepage]
+\titlepage
+\end{frame}
+
+\begin{frame}{What is Bubble Sort?}
+\begin{itemize}
+    \item A simple sorting algorithm
+    \item Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order
+    \item After each pass, the largest unsorted element "bubbles up" to its correct position
+    \item Time Complexity: $O(n^2)$ (worst and average case)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Python Implementation}
+\begin{lstlisting}[language=Python]
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+    return arr
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Key Points}
+\begin{itemize}
+    \item Outer loop runs $n$ times
+    \item Inner loop avoids last $i$ elements (already sorted)
+    \item Swaps elements if they are out of order
+    \item Optimization: `swapped` flag allows early exit if list is already sorted
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Sorting a List}
+\begin{lstlisting}[language=Python]
+data = [64, 34, 25, 12, 22, 11, 90]
+print("Original:", data)
+sorted_data = bubble_sort(data)
+print("Sorted:", sorted_data)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{When to Use Bubble Sort}
+\begin{itemize}
+    \item Best used for educational purposes or small datasets
+    \item Simple to understand and implement
+    \item Inefficient for large data (use QuickSort, MergeSort, etc.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item Bubble Sort is an intuitive, comparison-based algorithm
+    \item Performance is poor compared to modern sorting methods
+    \item Useful for demonstrating the fundamentals of sorting and control structures
+\end{itemize}
+\end{frame}
+
+\end{document}
+
