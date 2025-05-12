@@ -1,0 +1,152 @@
+\section{Basic Python Operators}
+\begin{frame}[plain]
+\sectionpage
+\end{frame}
+
+\begin{frame}{What are Operators?}
+\begin{itemize}
+    \item Operators are symbols used to perform operations on variables and values.
+    \item Operators are classified into several types:
+    \begin{itemize}
+        \item Arithmetic operators
+        \item Comparison operators
+        \item Logical operators
+        \item Assignment operators
+        \item Bitwise operators
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Arithmetic Operators}
+\begin{itemize}
+    \item \(\texttt{+}\) Addition
+    \item \(\texttt{-}\) Subtraction
+    \item \(\texttt{*}\) Multiplication
+    \item \(\texttt{/}\) Division (float)
+    \item \(\texttt{//}\) Floor division (integer result)
+    \item \(\texttt{\%}\) Modulus (remainder)
+    \item \(\texttt{**}\) Exponentiation
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+\begin{lstlisting}[language=python]
+a = 10
+b = 3
+
+print(a + b)  # Addition
+print(a - b)  # Subtraction
+print(a * b)  # Multiplication
+print(a / b)  # Division
+print(a // b) # Floor Division
+print(a % b)  # Modulus
+print(a ** b) # Exponentiation
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Comparison Operators}
+\begin{itemize}
+    \item \(\texttt{==}\) Equal to
+    \item \(\texttt{!=}\) Not equal to
+    \item \(\texttt{<}\) Less than
+    \item \(\texttt{>}\) Greater than
+    \item \(\texttt{<=}\) Less than or equal to
+    \item \(\texttt{>=}\) Greater than or equal to
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+\begin{lstlisting}[language=python]
+a = 10
+b = 3
+
+print(a == b)  # Equal to
+print(a != b)  # Not equal to
+print(a < b)   # Less than
+print(a > b)   # Greater than
+print(a <= b)  # Less than or equal to
+print(a >= b)  # Greater than or equal to
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Logical Operators}
+Logical operators are used to combine conditional statements.
+\begin{itemize}
+    \item \(\texttt{and}\): Returns True if both statements are true
+    \item \(\texttt{or}\): Returns True if one of the statements is true
+    \item \(\texttt{not}\): Reverses the result, returns True if the result is false
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+\begin{lstlisting}[language=python]
+x = True
+y = False
+
+print(x and y)  # False
+print(x or y)   # True
+print(not x)    # False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Assignment Operators}
+\begin{itemize}
+    \item \(\texttt{=}\): Assign
+    \item \(\texttt{+=}\): Add and assign
+    \item \(\texttt{-=}\): Subtract and assign
+    \item \(\texttt{*=}\): Multiply and assign
+    \item \(\texttt{/=}\): Divide and assign
+    \item \(\texttt{\%=}\): Modulus and assign
+    \item \(\texttt{**=}\): Exponentiate and assign
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+\begin{lstlisting}[language=python]
+x = 10
+x += 5  # x = x + 5
+x -= 3  # x = x - 3
+x *= 2  # x = x * 2
+x /= 4  # x = x / 4
+x %= 3  # x = x % 3
+x **= 2 # x = x ** 2
+print(x)
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Bitwise Operators}
+Bitwise operators are used to perform operations on binary numbers.
+\begin{itemize}
+    \item \(\texttt{\&}\): Bitwise AND
+    \item \(\texttt{|}\): Bitwise OR
+    \item \texttt{\textasciicircum}: Bitwise XOR
+    \item \texttt{\textasciitilde}: Bitwise NOT
+    \item \(\texttt{<<}\): Left shift
+    \item \(\texttt{>>}\): Right shift
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+\begin{lstlisting}[language=python]
+a = 10  # 1010 in binary
+b = 4   # 0100 in binary
+
+print(a & b)  # Bitwise AND
+print(a | b)  # Bitwise OR
+print(a ^ b)  # Bitwise XOR
+print(~a)     # Bitwise NOT
+print(a << 1) # Left shift
+print(a >> 1) # Right shift
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item Operators are essential building blocks in Python.
+    \item Understanding arithmetic, comparison, logical, assignment, and bitwise operators allows you to perform various operations in your programs.
+    \item Practice using these operators will help you write efficient and expressive code.
+\end{itemize}
+\end{frame}
+

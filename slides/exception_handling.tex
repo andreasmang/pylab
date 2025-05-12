@@ -1,0 +1,94 @@
+\section*{Exception Handling}
+
+\begin{frame}{What is Exception Handling?}
+\begin{itemize}
+    \item Exception handling is a mechanism to handle runtime errors, maintaining the normal flow of program execution.
+    \item In Python, errors detected during execution are called \textit{exceptions}.
+    \item If an exception occurs, Python will stop executing the code and look for a handler.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Basic Syntax}
+\begin{itemize}
+    \item \texttt{try}: Specifies the block of code to test for errors.
+    \item \texttt{except}: Specifies the block of code to execute if an error occurs.
+    \item \texttt{else}: Specifies the block of code to execute if no error occurs.
+    \item \texttt{finally}: A block of code that will always execute, regardless of whether an exception occurred.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Example of Try-Except Block}
+\begin{lstlisting}[language=Python]
+try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+\end{lstlisting}
+\begin{itemize}
+\item Here, \texttt{ZeroDivisionError} is raised and handled in the \texttt{except} block.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Handling Multiple Exceptions}
+\begin{itemize}
+\item You can handle different exceptions separately.
+\item Example:
+\begin{itemize}
+    \item \texttt{ValueError}: Raised when an invalid value is passed (e.g., converting a string to an integer).
+    \item \texttt{IndexError}: Raised when trying to access an invalid index in a list.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Handling Multiple Exceptions}
+\begin{lstlisting}[language=Python]
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Please enter a valid number.")
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Using Else and Finally}
+    \begin{itemize}
+        \item The \texttt{else} block will execute if no exception occurs.
+        \item The \texttt{finally} block will always execute, regardless of exceptions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with Else and Finally}
+\begin{lstlisting}[language=Python]
+try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+except ZeroDivisionError:
+    print("Error: Division by zero.")
+else:
+    print("The result is:", result)
+finally:
+    print("This will always execute.")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Best Practices}
+    \begin{itemize}
+        \item Only catch exceptions that you can handle effectively.
+        \item Avoid using \texttt{except:} as it can catch unintended exceptions.
+        \item Always clean up resources in the \texttt{finally} block (e.g., closing files or network connections).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item Exception handling is essential for writing robust and fault-tolerant Python programs.
+        \item Use \texttt{try}, \texttt{except}, \texttt{else}, and \texttt{finally} effectively to handle errors.
+        \item Always ensure your program can recover gracefully from errors or failures.
+    \end{itemize}
+\end{frame}
+
+
